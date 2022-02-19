@@ -29,37 +29,44 @@ void Color(int ForgC){
  }
 bool checks_if_win(player p1,player p2,char Array[][3]){
      if ((Array [0][0] == p1.playerchar && Array [0][1] == p1.playerchar && Array [0][2] == p1.playerchar) || (Array [1][0] == p1.playerchar && Array [1][1] == p1.playerchar && Array [1][2] == p1.playerchar) || (Array [2][0] == p1.playerchar && Array [2][1] == p1.playerchar && Array [2][2] == p1.playerchar)){
-        printf("Congratulations %s : you are the winner",p1.noun);
+        Color(2);
+        printf("  Congratulations %s : you are the winner",p1.noun);
         return true;
      }
         else if ( (Array [0][0] == p2.playerchar && Array [0][1] == p2.playerchar && Array [0][2] == p2.playerchar) || (Array [1][0] == p2.playerchar && Array [1][1] == p2.playerchar && Array [1][2] == p2.playerchar) || (Array [2][0] == p2.playerchar && Array [2][1] == p2.playerchar && Array [2][2] == p2.playerchar)){
-            printf("Congratulations %s : you are the winner",p2.noun);
+            Color(2);
+            printf("  Congratulations %s : you are the winner",p2.noun);
             return true;
         }
         else if ( Array[0][0] == p1.playerchar && Array[1][0] == p1.playerchar && Array[2][0] == p1.playerchar || Array[0][1] == p1.playerchar && Array[1][1] == p1.playerchar && Array[2][1] == p1.playerchar || Array[0][2] == p1.playerchar && Array[1][2] == p1.playerchar && Array[2][2] == p1.playerchar ){
-            printf("Congratulations %s : you are the winner",p1.noun);
+            Color(2);
+            printf("  Congratulations %s : you are the winner",p1.noun);
             return true;
         }
         else if ( Array[0][0] == p2.playerchar && Array[1][0] == p2.playerchar && Array[2][0] == p2.playerchar || Array[0][1] == p2.playerchar && Array[1][1] == p2.playerchar && Array[2][1] == p2.playerchar || Array[0][2] == p2.playerchar && Array[1][2] == p2.playerchar && Array[2][2] == p2.playerchar ){
-            printf("Congratulations %s : you are the winner",p2.noun);
+            Color(2);
+            printf("  Congratulations %s : you are the winner",p2.noun);
             return true;
         }
         else if ( Array[0][0] == p1.playerchar && Array[1][1] == p1.playerchar && Array[2][2] == p1.playerchar || Array[2][0] == p1.playerchar && Array[1][1] == p1.playerchar && Array[0][2] == p1.playerchar  ){
-            printf("Congratulations %s : you are the winner",p1.noun);
+            Color(2);
+            printf("  Congratulations %s : you are the winner",p1.noun);
             return true;
         }
         else if ( Array[0][0] == p2.playerchar && Array[1][1] == p2.playerchar && Array[2][2] == p2.playerchar || Array[2][0] == p2.playerchar && Array[1][1] == p2.playerchar && Array[0][2] == p2.playerchar  ){
-             printf("Congratulations %s : you are the winner",p2.noun);
+             Color(2);
+             printf("  Congratulations %s : you are the winner",p2.noun);
              return true;
         }
         else {
-            puts("\nNo the winner ");
+            puts("\n There is no winner ");
         } return false;
-}
+    }
+
 bool delclaration_game_face(player p1, player p2 ){
      int index1,index2,index3;
      char Array[3][3] = { {'1','2','3' }, {'4','5','6'} , {'7','8','9'} };
-     for( index1=0 ; index1<4 ; index1++ ){
+     for( index1=0 ; index1<9 ; index1++ ){
       for( index2=0 ; index2<3 ; index2++ ){
          for(index3=0;index3<3;index3++){
                if( Array[index2][index3] == p1.assist[index1] )  Array[index2][index3] = p1.playerchar;
@@ -200,7 +207,7 @@ void scan_num( player p1 , player p2 ){
      puts(" ** Okey A simple rule : you will give each of a number.The winner is who chooses the number closest to my mind (:...Good luck ");
      do{
       Color(2);
-      printf("\n  %s : ",p1.noun);
+      printf("\n  %s :",p1.noun);
       Color(15);
       printf(" Give me your number please => ");
       scanf(" %f",&p1.numpl);
@@ -212,15 +219,12 @@ void scan_num( player p1 , player p2 ){
      }while ( condition( p1 , p2 ) == 0   );
 }
 int main (){
-     system("cls");
-     system("COLOR 0F");
-     printf("\t WELCOME TO MY GAME *-* \n");
      char again;
      int assist;
      do{
      system("cls");
      system("COLOR 0F");
-     printf("\t WELCOME TO MY GAME *-* \n");
+     printf("\t WELCOME TO MY GAME *-*  \n");
      player p1,p2;
      printf("\n  PLAYER 1 : Give me  yourname please : ");
      scanf(" %s",&p1.noun);
@@ -232,7 +236,8 @@ int main (){
       assist=p2.noun[0];
      if(  assist>90 ) p2.noun[0] = assist - 32 ;
       scan_num(p1,p2);
-      printf("\nif you want to exit click 0 (ZERO) or if you want to continue click any key : ");
+      Color(4);
+      printf("\n  if you want to exit click 0 (ZERO) or if you want to continue click any key : ");
       again = getch();
      }while(again  == '0' );
 }
